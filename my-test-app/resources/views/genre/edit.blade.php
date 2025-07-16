@@ -18,7 +18,8 @@
                 <label for="inputName" class="form-label"><strong>Title:</strong></label>
                 <input 
                     type="text" 
-                    Title="Name" 
+                    Title="name" 
+                     name="name"
                     value="{{ $genre->name }}"
                     class="form-control @error('Name') is-invalid @enderror" 
                     id="inputName" 

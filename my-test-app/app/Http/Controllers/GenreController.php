@@ -45,6 +45,8 @@ class GenreController extends Controller
     public function store(GenreStoreRequest $request): RedirectResponse
     {
         //
+
+
         Genre::create($request->validated());
            
         return redirect()->route('genre.index')
@@ -77,9 +79,7 @@ class GenreController extends Controller
    
     {
         //
-        var_dump($genre); 
-        var_dump($request);
-        die;
+
         $genre->update($request->validated());
 
        // var_dump($genre); die;
