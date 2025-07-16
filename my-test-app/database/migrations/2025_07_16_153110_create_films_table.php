@@ -15,7 +15,7 @@ return new class extends Migration
            // $table->id();
             $table->uuid('id');
             $table->string('name',250);
-            $table->boolean('published');
+            $table->boolean('published')->default(false);
             $table->string('posterlink',500)->default('default.jpg');
             $table->timestamps();
         });

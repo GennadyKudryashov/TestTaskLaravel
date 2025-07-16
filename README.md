@@ -109,3 +109,21 @@ as we can see structure of table is ok;
 
 now switsh to model genre and add fillable fields :
 
+also create new resource controller for Films model:
+
+``` php artisan make:controller FilmController --resource --model=Film  ```
+
+  INFO  Controller [app/Http/Controllers/FilmController.php] created successfully.  
+
+  now we add to web route new route for controller :
+
+  ``` Route::resource('film', FilmController::class);```
+
+  and after filling all controller methods we add views like this :
+
+  ``` php artisan make:view films.index ```
+
+   INFO  View [resources/views/films/index.blade.php] created successfully. 
+
+   
+
