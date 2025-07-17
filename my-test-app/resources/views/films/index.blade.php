@@ -30,7 +30,9 @@
                         <td>{{ ++$i }}</td>
                         <td>{{ $film->name }}</td>
                         <td>
-                          
+                        @forelse ($film->genres as $genre)
+                           {{ $genre->name }},
+                        @endforeach
                         </td>
                         <td>
                             <form action="{{ route('film.destroy',$film->id) }}" method="POST">

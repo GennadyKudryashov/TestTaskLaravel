@@ -15,6 +15,20 @@ class FilmUpdateRequest extends FormRequest
         return true;
     }
 
+
+
+    
+    /**
+     * @inheritDoc
+     */
+    protected function prepareForValidation()
+    {
+        //dd($this->genre);
+        //dd($this->genres);
+        $this->replace(['genres' => explode(',',  $this->genres)]);
+    }
+    
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -25,6 +39,7 @@ class FilmUpdateRequest extends FormRequest
         return [
             //
               'name' => 'required|string|max:250',
+              'genres' => 'array'
             // 'title' =>'required|string|max:255',
         ];
     }

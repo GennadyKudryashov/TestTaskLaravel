@@ -19,8 +19,10 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 mt-2">
                 <div class="form-group">
-                    <strong>contents:</strong> <br/>
-                    {{ $film->content }}
+                    <strong>genres:</strong> <br/>
+                    @foreach ($film->genres as $genre)
+                        {{ $genre->name }},
+                    @endforeach
                 </div>
             </div>
         </div>

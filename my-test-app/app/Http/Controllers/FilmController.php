@@ -55,6 +55,8 @@ class FilmController extends Controller
     public function show(Film $film)
     {
         //
+        //$genre = $film->genres();
+        //var_dump($genre);die;
         return view('films.show', compact('film'));
     }
 
@@ -76,7 +78,18 @@ class FilmController extends Controller
     {
         //
 
-        $film->update($request->validated());
+       // $film->update($request->validated());
+
+        $ids_list = $request->input('genres');//->toArray();
+        $ids = explode(',', $ids_list);
+        //dd($ids);
+        foreach( $ids as $id){
+
+            $film->genres()->attach($id);
+        }
+
+
+        $film->save();
 
        // var_dump($genre); die;
           
