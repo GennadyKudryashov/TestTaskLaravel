@@ -125,5 +125,13 @@ also create new resource controller for Films model:
 
    INFO  View [resources/views/films/index.blade.php] created successfully. 
 
+   added factory and seeders;
+
+   added validator to save many to many relations.
+
+   to run project visit localhost:8000 links on front page
+
+   there was an viget for editing many2many relation with passibility inser array of id, but i forgot where it was (need to find it again)
+
    
 

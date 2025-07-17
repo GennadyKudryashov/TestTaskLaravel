@@ -32,6 +32,13 @@
                 
                 </div>
             </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 mt-2">
+                <div class="form-group">
+                    <strong>poster:</strong> <br/>
+                        <img src="{{ $film->posterlink  }}">
+                
+                </div>
+            </div>
         </div>
 
     </div>

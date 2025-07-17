@@ -20,6 +20,7 @@
                     <th width="80px">No</th>
                     <th>Title</th>
                     <th>Genre</th>
+                    <th>Published</th>
                     <th width="250px">Action</th>
                 </tr>
             </thead>
@@ -33,6 +34,9 @@
                         @forelse ($film->genres as $genre)
                            {{ $genre->name }},
                         @endforeach
+                        </td>
+                        <td>
+                            {{ $film->published? 'Published': 'Hidden' }}
                         </td>
                         <td>
                             <form action="{{ route('film.destroy',$film->id) }}" method="POST">
