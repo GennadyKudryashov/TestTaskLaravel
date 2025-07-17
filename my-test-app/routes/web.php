@@ -16,18 +16,29 @@ Route::resource('genre', GenreController::class);
 Route::resource('film', FilmController::class);
 
 Route::get('/api/genres/{id}', function (string $id) {
+
+$films = Film::join('genre_films', 'genre_films.film_id', '=', 'films.id') -> where( 'genre_films.genre_id' , '=', $id);
+
+    return new FilmCollection(
+       $films->paginate(5)
+        
+    );
+   
+});
+
+Route::get('/api/films/', function () {
+
+    return new FilmCollection(Film::paginate());
+
+});
+
+Route::get('/api/films/{id}', function (string $id) {
 // dd($id);
-//$gen = Genre::findOrFail($id);
-//dd($gen);
-
-//$users = User::where('votes', '>', 100)->paginate(15);
-    return new FilmCollection(Film::where('genres:id','=',$id)->paginate());
-    // return new FilmCollection($gen->films()->paginate());
-
-});
-
-Route::get('/api/genres/', function () {
-
-    return new GenreCollection(Genre::All());
-
-});
+    $film = Film::find($id)->first();
+        return new FilmCollection(
+           [$film]
+            
+        );
+       
+    });
+    
