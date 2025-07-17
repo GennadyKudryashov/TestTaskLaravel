@@ -76,22 +76,11 @@ class FilmController extends Controller
     public function update(FilmUpdateRequest $request, Film $film): RedirectResponse
    
     {
-        //
+        $ids_list = $request->input('genres');
 
-       // $film->update($request->validated());
+        $film->genres()->sync($ids_list);
 
-        $ids_list = $request->input('genres');//->toArray();
-        $ids = explode(',', $ids_list);
-        //dd($ids);
-        foreach( $ids as $id){
-
-            $film->genres()->attach($id);
-        }
-
-
-        $film->save();
-
-       // var_dump($genre); die;
+        $film->update($request->validated());
           
         return redirect()->route('film.index')
                         ->with('success', 'Film updated successfully');

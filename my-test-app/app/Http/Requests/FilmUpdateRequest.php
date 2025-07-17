@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Str;
 
 class FilmUpdateRequest extends FormRequest
 {
@@ -21,11 +22,14 @@ class FilmUpdateRequest extends FormRequest
     /**
      * @inheritDoc
      */
-    protected function prepareForValidation()
+    protected function prepareForValidation():void
     {
         //dd($this->genre);
         //dd($this->genres);
-        $this->replace(['genres' => explode(',',  $this->genres)]);
+        $ids = Str::trim($this->genres,'[]');
+        $ids = Str::replace('"','',$ids);
+        // dd($ids);
+        $this->merge(['genres' => explode(',',  $ids)]);
     }
     
 
@@ -39,7 +43,7 @@ class FilmUpdateRequest extends FormRequest
         return [
             //
               'name' => 'required|string|max:250',
-              'genres' => 'array'
+              'genres' => 'array',
             // 'title' =>'required|string|max:255',
         ];
     }
