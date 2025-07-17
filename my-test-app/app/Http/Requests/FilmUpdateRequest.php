@@ -12,7 +12,7 @@ class FilmUpdateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        //return false;
+        
         return true;
     }
 
@@ -24,11 +24,9 @@ class FilmUpdateRequest extends FormRequest
      */
     protected function prepareForValidation():void
     {
-        //dd($this->genre);
-        //dd($this->genres);
         $ids = Str::trim($this->genres,'[]');
         $ids = Str::replace('"','',$ids);
-        // dd($ids);
+        
         $this->merge(['genres' => explode(',',  $ids)]);
     }
     
@@ -44,7 +42,8 @@ class FilmUpdateRequest extends FormRequest
             //
               'name' => 'required|string|max:250',
               'genres' => 'array',
-            // 'title' =>'required|string|max:255',
+              'published' =>'required'
+           
         ];
     }
 }

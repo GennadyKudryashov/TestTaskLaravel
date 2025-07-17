@@ -42,7 +42,20 @@
                     <div class="form-text text-danger">{{ $message }}</div>
                 @enderror
             </div>
-
+            <div class="mb-3">
+                <label for="inputPublished" class="form-label"><strong>Genres:</strong></label>
+                <input 
+                    type="text" 
+                    Title="genres" 
+                     name="published"
+                    value="{{ $film->published }}"
+                    class="form-control @error('genres') is-invalid @enderror" 
+                    id="inputPublished" 
+                    placeholder="Title">
+                @error('Name')
+                    <div class="form-text text-danger">{{ $message }}</div>
+                @enderror
+            </div>
 
             <button type="submit" class="btn btn-success"><i class="fa-solid fa-floppy-disk"></i> Update</button>
         </form>

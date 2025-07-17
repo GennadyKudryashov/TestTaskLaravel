@@ -15,7 +15,7 @@ class Film extends Model
     //
     protected $fillable = [
         'name',
-        
+        'published'
     ];
 
     public function genres(): BelongsToMany
